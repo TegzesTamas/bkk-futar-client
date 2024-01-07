@@ -5,10 +5,10 @@ from time import localtime, mktime, strftime
 import requests
 import pprint
 
-from consts import apikey, stopId
+from bkk_futar_client.consts import apikey, stopId
 
 
-def arrivalMinutes(apikey: str, stopId: str, maxDepartures: int, minsBefore: int, minsAfter: int, debug: bool = False) -> list[float]:
+def arrivalMinutes(apikey: str = apikey, stopId: str = stopId, maxDepartures: int = 10, minsBefore: int = 0, minsAfter: int = 90, debug: bool = False) -> list[float]:
 
     request_url :str = f'https://futar.bkk.hu/api/query/v1/ws/otp/api/where/arrivals-and-departures-for-stop.json?key={apikey}&version=3&includeReferences=false&stopId={stopId}&onlyDepartures=true&limit={maxDepartures}&minutesBefore={minsBefore}&minutesAfter={minsAfter}'
 
